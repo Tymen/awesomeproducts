@@ -19,5 +19,8 @@ Route::get('/elements', "PagesController@elements");
 Route::get('/contact', "PagesController@contact");
 Route::get('/blog', "PagesController@blog");
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', "AdminController@index");
+Route::get('/admin/users', "AdminController@users");
+Route::resource('/admin/tag', "TagController");
+Route::resource('/admin/post', "PostController");
+Route::get('/profile', 'HomeController@index')->name('home');

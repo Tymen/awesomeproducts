@@ -65,7 +65,7 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <ul class="submenu">
-                                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
                                             <li><a class="dropdown-item" href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
@@ -231,7 +231,7 @@
             </div>
             <div class="copyright_text text-center">
                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Developed by | Designed with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Developed by AMPD Team | Designed with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
             </div>
         </div>
