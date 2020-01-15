@@ -139,31 +139,6 @@
         </div>
     </div>
 </div>
-    <div class="subscribe_newsletter">
-        <div class="container">
-            <div class="black_bg">
-                <div class="row">
-                    <div class="col-xl-6">
-                        <div class="newsletter_text">
-                            <h3>
-                                Subscribe newsletter
-                            </h3>
-                            <p>Get updates to our newsletter and new articles</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="newsform">
-                            <form action="#">
-                                <input type="email" placeholder="Enter Your Email">
-                                <button type="submit">sign up</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!-- photographi_area_end -->
 <!-- most_recent_blog_start -->
 <div class="most_recent_blog">
     <div class="container">

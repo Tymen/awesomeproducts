@@ -162,6 +162,30 @@
             </div>
         </div>
     </div>
+    <div class="subscribe_newsletter">
+        <div class="container">
+            <div class="black_bg">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="newsletter_text">
+                            <h3>
+                                Subscribe newsletter
+                            </h3>
+                            <p>Get updates to our newsletter and new articles</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="newsform">
+                            <form action="#">
+                                <input type="email" placeholder="Enter Your Email">
+                                <button type="submit">sign up</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- photo_gallery_end -->
     <!-- footer_start -->
     <footer class="footer">
@@ -171,9 +195,7 @@
                     <div class="col-xl-12">
                         <div class="footer_info text-center">
                             <div class="footer_logo text-center">
-                                <a href="#">
-                                    <img src="img/footer-logo.png" alt="">
-                                </a>
+                                <h1 class="text-white">Awesome products</h1>
                             </div>
                             <p class="footer_text">
                                 Explore photo media blog to enrich your photography knowledge
