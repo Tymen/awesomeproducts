@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    public function user()
+    public function User()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
-    public function category()
+    public function tags()
     {
-        $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Tag::class, "post_tag", "post_id", "tag_id");
     }
 }

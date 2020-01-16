@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -14,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('admin.post.index');
+        return view('admin.post.index')->with("tags", Tag::all())->with("posts", Post::all());
     }
 
     /**
@@ -24,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create');
+        return view('admin.post.create')->with("tags", Tag::all());
     }
 
     /**
@@ -35,7 +37,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255',
+        ]);
+        $post = new Post();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->user_id = Auth::user()->id;
+        $post->save();
+
+        $post->tags()->sync([1], false);
+        return redirect("/admin/post");
     }
 
     /**

@@ -14,7 +14,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        return view('admin.tag.index');
+        return view('admin.tag.index')->with('tags', Tag::all());
     }
 
     /**
@@ -24,7 +24,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create');
+        return view('admin.tag.create');
     }
 
     /**
@@ -35,7 +35,13 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+        ]);
+        $tag = new Tag();
+        $tag->name = $request->name;
+        $tag->save();
+        return redirect('/admin/tag');
     }
 
     /**
