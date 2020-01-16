@@ -2,6 +2,9 @@
 @section("docTitle")
     Users
 @endsection
+@section("sidenavUser")
+    active
+@endsection
 @section("content")
     <!-- Sidebar Navigation end-->
     <div class="page-content">
@@ -31,15 +34,23 @@
                                         <th>#</th>
                                         <th>Username</th>
                                         <th>Email</th>
+                                        <th>Posts</th>
+                                        <th>Role</th>
                                         <th>Created at</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($users as $user)
-                                        <tr>
+                                        <tr style="cursor: pointer" onclick="window.location.href = '/admin/users/{{$user->id}}/edit'">
                                             <th scope="row">{{$user->id}}</th>
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
+                                            <td>{{count($user->post)}}</td>
+                                            <td>
+                                                @foreach($user->Role as $role)
+                                                    {{$role->name}} |
+                                                @endforeach
+                                            </td>
                                             <td>{{$user->created_at}}</td>
                                         </tr>
                                     @endforeach

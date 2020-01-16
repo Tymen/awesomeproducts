@@ -2,6 +2,9 @@
 @section("docTitle")
     Tag Create
 @endsection
+@section("sidenavTag")
+    active
+@endsection
 @section("content")
         <!-- Sidebar Navigation end-->
         <div class="page-content">

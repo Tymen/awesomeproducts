@@ -2,6 +2,9 @@
 @section("docTitle")
     Users
 @endsection
+@section("sidenavBlog")
+    active
+@endsection
 @section("content")
     <!-- Sidebar Navigation end-->
     <div class="page-content">
@@ -30,15 +33,21 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Username</th>
+                                        <th>Tags</th>
                                         <th>Owner</th>
                                         <th>Created at</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($posts as $post)
-                                        <tr>
+                                        <tr onclick="window.location.href = '/admin/post/{{$post->id}}/edit'">
                                             <th scope="row">{{$post->id}}</th>
                                             <td>{{$post->title}}</td>
+                                            <td>
+                                            @foreach($post->tags as $tag)
+                                                {{$tag->name}} |
+                                            @endforeach
+                                            </td>
                                             <td>{{$post->User->name}}</td>
                                             <td>{{$post->created_at}}</td>
                                         </tr>

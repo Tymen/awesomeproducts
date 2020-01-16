@@ -1,6 +1,9 @@
 @extends("layouts.admin")
 @section("docTitle")
-
+    Dashboard
+@endsection
+@section("sidenavDash")
+    active
 @endsection
 @section("content")
         <!-- Sidebar Navigation end-->
@@ -17,12 +20,12 @@
                             <div class="statistic-block block">
                                 <div class="progress-details d-flex align-items-end justify-content-between">
                                     <div class="title">
-                                        <div class="icon"><i class="icon-user-1"></i></div><strong>New Clients</strong>
+                                        <div class="icon"><i class="icon-user-1"></i></div><strong>User count</strong>
                                     </div>
-                                    <div class="number dashtext-1">27</div>
+                                    <div class="number dashtext-1">{{count($users)}}</div>
                                 </div>
                                 <div class="progress progress-template">
-                                    <div role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-1"></div>
+                                    <div role="progressbar" style="width: {{count($users)}}%" aria-valuenow="{{count($users)}}" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-1"></div>
                                 </div>
                             </div>
                         </div>
@@ -30,12 +33,12 @@
                             <div class="statistic-block block">
                                 <div class="progress-details d-flex align-items-end justify-content-between">
                                     <div class="title">
-                                        <div class="icon"><i class="icon-contract"></i></div><strong>New Projects</strong>
+                                        <div class="icon"><i class="icon-contract"></i></div><strong>Tags</strong>
                                     </div>
-                                    <div class="number dashtext-2">375</div>
+                                    <div class="number dashtext-2">{{count($tags)}}</div>
                                 </div>
                                 <div class="progress progress-template">
-                                    <div role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-2"></div>
+                                    <div role="progressbar" style="width: {{count($tags)}}%" aria-valuenow="{{count($tags)}}" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-2"></div>
                                 </div>
                             </div>
                         </div>
@@ -43,12 +46,12 @@
                             <div class="statistic-block block">
                                 <div class="progress-details d-flex align-items-end justify-content-between">
                                     <div class="title">
-                                        <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>New Invoices</strong>
+                                        <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>Post count</strong>
                                     </div>
-                                    <div class="number dashtext-3">140</div>
+                                    <div class="number dashtext-3">{{count($posts)}}</div>
                                 </div>
                                 <div class="progress progress-template">
-                                    <div role="progressbar" style="width: 55%" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-3"></div>
+                                    <div role="progressbar" style="width: {{count($posts)}}%" aria-valuenow="{{count($posts)}}" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-3"></div>
                                 </div>
                             </div>
                         </div>

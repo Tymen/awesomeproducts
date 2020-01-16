@@ -14,14 +14,14 @@
         <!-- Page Header-->
         <div class="page-header no-margin-bottom">
             <div class="container-fluid">
-                <h2 class="h5 no-margin-bottom">Create a tag</h2>
+                <h2 class="h5 no-margin-bottom">Edit</h2>
             </div>
         </div>
         <!-- Breadcrumb-->
         <div class="container-fluid">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">Create a tag            </li>
+                <li class="breadcrumb-item active">Edit blog post            </li>
             </ul>
         </div>
         <section class="no-padding-top">
@@ -30,24 +30,25 @@
                     <!-- Basic Form-->
                     <div class="col-lg-12">
                         <div class="block">
-                            <div class="title"><strong class="d-block">Create a tag</strong><span class="d-block">Lorem ipsum dolor sit amet consectetur.</span></div>
+                            <div class="title"><strong class="d-block">Edit post: {{$post->title}}</strong><span class="d-block"></span></div>
                             <div class="block-body">
-                                <form class="col-6" action="/admin/post" method="post">
+                                <form class="col-6" action="/admin/post/{{$post->id}}" method="post">
                                     @csrf
+                                    @method("PUT")
                                     <div class="form-group">
                                         <label class="form-control-label">Title</label>
-                                        <input type="name" name="title" placeholder="title" class="form-control">
+                                        <input type="name" name="title" placeholder="title" value="{{$post->title}}" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label class=" form-control-label">Select Tags</label>
                                         <select id="e9" name="tags[]" class="form-control mb-3 mb-3"  multiple>
                                             @foreach($tags as $tag)
-                                                <option style="display: block!important" value="{{$tag->id}}">{{$tag->name}}</option>
+                                                    <option style="display: block!important" value="{{$tag->id}}">{{$tag->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <textarea class="form-control" name="body"></textarea>
+                                        <textarea class="form-control" name="body">{{$post->body}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" type="submit" value="add" class="btn btn-primary">
@@ -75,6 +76,11 @@
                 crossorigin="anonymous"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
-        <script>$("#e9").select2();</script>
+        <script>
+            $("#e9").select2();
+            $('#e9').val([@foreach($post->tags as $seltag)'{{$seltag->id}}',@endforeach]); // Select the option with a value of '1'
+            $('#e9').trigger('change');
+        </script>
+{{--        {tags:[@foreach($post->tags as $seltag)'{{$seltag->name}}'@endforeach]});--}}
     </div>
 @endsection

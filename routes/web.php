@@ -19,8 +19,13 @@ Route::get('/elements', "PagesController@elements");
 Route::get('/contact', "PagesController@contact");
 Route::get('/blog', "PagesController@blog");
 Auth::routes();
-Route::get('/admin', "AdminController@index");
-Route::get('/admin/users', "AdminController@users");
-Route::resource('/admin/tag', "TagController");
-Route::resource('/admin/post', "PostController");
+
+Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
+    Route::get('/', "AdminController@index");
+    Route::get('/users', "AdminController@users");
+    Route::get('/users/{id}/edit', "AdminController@usersEdit");
+    Route::post('/users/{id}', "AdminController@usersStore");
+    Route::resource('/tag', "TagController");
+    Route::resource('/post', "PostController");
+});
 Route::get('/profile', 'HomeController@index')->name('home');

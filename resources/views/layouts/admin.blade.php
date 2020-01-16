@@ -17,11 +17,13 @@
     <!-- Google fonts - Muli-->
     <link rel="stylesheet" href="/adminpanel/https://fonts.googleapis.com/css?family=Muli:300,400,700">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="/adminpanel/css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="/adminpanel/css/style.sea.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for /adminpanel/your changes-->
     <link rel="stylesheet" href="/adminpanel/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="/adminpanel/img/favicon.ico">
+    <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
+    <script src="/js/bootstrap-tagsinput.js"></script>
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -43,7 +45,7 @@
         <div class="container-fluid d-flex align-items-center justify-content-between">
             <div class="navbar-header">
                 <!-- Navbar Header--><a href="index.html" class="navbar-brand">
-                    <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Dark</strong><strong>Admin</strong></div>
+                    <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">AMPD</strong><strong>Admin</strong></div>
                     <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div></a>
                 <!-- Sidebar Toggle Btn-->
                 <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
@@ -176,26 +178,26 @@
         <div class="sidebar-header d-flex align-items-center">
             <div class="avatar"><img src="/adminpanel/img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
-                <h1 class="h5">Mark Stephen</h1>
-                <p>Web Designer</p>
+                <h1 class="h5">{{Auth::user()->name}}</h1>
+                <p>{{Auth::user()->Role->first()->name}}</p>
             </div>
         </div>
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
-            <li class="active"><a href="/admin"> <i class="icon-home"></i>Home </a></li>
-            <li><a href="#navblog" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Blog</a>
+            <li class="@yield('sidenavDash')"><a href="/admin"> <i class="fa fa-bar-chart"></i>Dashboard </a></li>
+            <li class="@yield('sidenavBlog')"><a href="#navblog" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Blog</a>
                 <ul id="navblog" class="collapse list-unstyled ">
                     <li><a href="/admin/post">Overview</a></li>
                     <li><a href="/admin/post/create">Create</a></li>
                 </ul>
             </li>
-            <li><a href="#navtag" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Tag</a>
+            <li class="@yield('sidenavTag')"><a href="#navtag" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Tag</a>
                 <ul id="navtag" class="collapse list-unstyled ">
                     <li><a href="/admin/tag">Overview</a></li>
                     <li><a href="/admin/tag/create">Create</a></li>
                 </ul>
             </li>
-            <li><a href="#navusers" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Users</a>
+            <li class="@yield('sidenavUser')"><a href="#navusers" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Users</a>
                 <ul id="navusers" class="collapse list-unstyled ">
                     <li><a href="/admin/users">Overview</a></li>
                 </ul>
@@ -220,5 +222,6 @@
 <script src="/adminpanel/vendor/jquery-validation/jquery.validate.min.js"></script>
 <script src="/adminpanel/js/charts-home.js"></script>
 <script src="/adminpanel/js/front.js"></script>
+</div>
 </body>
 </html>

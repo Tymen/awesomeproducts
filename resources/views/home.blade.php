@@ -15,6 +15,12 @@
                     @endif
                     <p>Account: {{Auth::user()->name}}</p>
                     <p>Email: {{Auth::user()->email}}</p>
+                    <p>Account type:</p>
+                    <ol>
+                        @foreach(Auth::user()->Role as $role)
+                                <li>{{$role->name}}</li>
+                        @endforeach
+                    </ol>
                 </div>
             </div>
         </div>

@@ -2,6 +2,9 @@
 @section("docTitle")
     Users
 @endsection
+@section("sidenavTag")
+    active
+@endsection
 @section("content")
     <!-- Sidebar Navigation end-->
     <div class="page-content">
@@ -39,7 +42,7 @@
                                         <tr>
                                             <th scope="row">{{$tag->id}}</th>
                                             <td>{{$tag->name}}</td>
-                                            <td>Posts</td>
+                                            <td>{{count($tag->post)}}</td>
                                             <td>{{$tag->created_at}}</td>
                                         </tr>
                                     @endforeach

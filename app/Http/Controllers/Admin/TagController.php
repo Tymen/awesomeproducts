@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Category;
+use App\tag;
 use Illuminate\Http\Request;
-
-class ategoryController extends Controller
+use App\Http\Controllers\Controller;
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.tag.index')->with('tags', Tag::all());
     }
 
     /**
@@ -24,7 +24,7 @@ class ategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tag.create');
     }
 
     /**
@@ -35,16 +35,22 @@ class ategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+        ]);
+        $tag = new Tag();
+        $tag->name = $request->name;
+        $tag->save();
+        return redirect('/admin/tag');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(tag $tag)
     {
         //
     }
@@ -52,10 +58,10 @@ class ategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(tag $tag)
     {
         //
     }
@@ -64,10 +70,10 @@ class ategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, tag $tag)
     {
         //
     }
@@ -75,10 +81,10 @@ class ategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(tag $tag)
     {
         //
     }

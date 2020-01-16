@@ -66,6 +66,9 @@
                                     <div class="dropdown-menu">
                                         <ul class="submenu">
                                             <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                                                @if (count(Auth::user()->Role->where("name", "admin")->all()) > 0)
+                                                    <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
+                                                @endif
                                             <li><a class="dropdown-item" href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
@@ -128,7 +131,7 @@
     @yield('content')
     <!-- photo_gallery_start -->
     <div class="photo_gallery">
-        <div class="container">
+        <div class="container mt-4">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="section_title mb-33">

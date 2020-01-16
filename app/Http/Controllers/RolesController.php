@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\CatgPostBridge;
+use App\Roles;
 use Illuminate\Http\Request;
 
-class CatgPostBridgeController extends Controller
+class RolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CatgPostBridgeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\CatgPostBridge  $catgPostBridge
+     * @param  \App\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function show(CatgPostBridge $catgPostBridge)
+    public function show(Roles $roles)
     {
         //
     }
@@ -52,10 +52,10 @@ class CatgPostBridgeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\CatgPostBridge  $catgPostBridge
+     * @param  \App\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function edit(CatgPostBridge $catgPostBridge)
+    public function edit(Roles $roles)
     {
         //
     }
@@ -64,10 +64,10 @@ class CatgPostBridgeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CatgPostBridge  $catgPostBridge
+     * @param  \App\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CatgPostBridge $catgPostBridge)
+    public function update(Request $request, Roles $roles)
     {
         //
     }
@@ -75,10 +75,10 @@ class CatgPostBridgeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CatgPostBridge  $catgPostBridge
+     * @param  \App\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CatgPostBridge $catgPostBridge)
+    public function destroy(Roles $roles)
     {
         //
     }

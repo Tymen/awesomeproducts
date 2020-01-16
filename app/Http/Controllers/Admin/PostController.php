@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\Controller;
 class PostController extends Controller
 {
     /**
@@ -39,6 +39,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required|max:255',
+            'tags' => 'required',
         ]);
         $post = new Post();
         $post->title = $request->title;
@@ -46,7 +47,7 @@ class PostController extends Controller
         $post->user_id = Auth::user()->id;
         $post->save();
 
-        $post->tags()->sync([1], false);
+        $post->tags()->sync($request->tags, false);
         return redirect("/admin/post");
     }
 
@@ -69,7 +70,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view("admin.post.edit")->with("post", $post)->with("tags", Tag::all());
     }
 
     /**
@@ -81,7 +82,14 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        if (Auth::user()->Role->name === "admin"){
+            $post->title = $request->title;
+            $post->body = $request->body;
+            $post->save();
+            $post->tags()->sync($request->tags);
+            return redirect("/admin/post");
+        }
+        return redirect("/admin");
     }
 
     /**
