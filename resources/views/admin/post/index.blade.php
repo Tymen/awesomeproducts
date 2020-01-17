@@ -1,6 +1,6 @@
 @extends("layouts.admin")
 @section("docTitle")
-    Users
+    Posts
 @endsection
 @section("sidenavBlog")
     active
@@ -11,14 +11,14 @@
         <!-- Page Header-->
         <div class="page-header no-margin-bottom">
             <div class="container-fluid">
-                <h2 class="h5 no-margin-bottom">Users overview</h2>
+                <h2 class="h5 no-margin-bottom">Posts overview</h2>
             </div>
         </div>
         <!-- Breadcrumb-->
         <div class="container-fluid">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">User overview            </li>
+                <li class="breadcrumb-item active">Posts overview            </li>
             </ul>
         </div>
         <section class="no-padding-top">
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="block">
-                            <div class="title"><strong>User Accounts</strong></div>
+                            <div class="title"><strong>Posts</strong></div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-sm">
                                     <thead>

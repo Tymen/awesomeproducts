@@ -32,8 +32,18 @@
                         <div class="block">
                             <div class="title"><strong class="d-block">Create a tag</strong><span class="d-block">Lorem ipsum dolor sit amet consectetur.</span></div>
                             <div class="block-body">
-                                <form class="col-6" action="/admin/post" method="post">
+                                <form class="col-6" action="/admin/post" method="post" enctype="multipart/form-data">
                                     @csrf
+                                    <div class="content">
+                                        @if (count($errors) > 0)
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                     <div class="form-group">
                                         <label class="form-control-label">Title</label>
                                         <input type="name" name="title" placeholder="title" class="form-control">
@@ -45,6 +55,10 @@
                                                 <option style="display: block!important" value="{{$tag->id}}">{{$tag->name}}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class=" form-control-label">Select thumbnail</label>
+                                        <input type="file" name="thumbnail" class="form-control-file" id="exampleFormControlFile1">
                                     </div>
                                     <div class="form-group">
                                         <textarea class="form-control" name="body"></textarea>

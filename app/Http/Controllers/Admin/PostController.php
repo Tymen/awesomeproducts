@@ -4,11 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Post;
 use App\Tag;
+use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+
 class PostController extends Controller
 {
+    use UploadTrait;
     /**
      * Display a listing of the resource.
      *
@@ -39,11 +44,23 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required|max:255',
-            'tags' => 'required',
+            'tags.*' => 'required',
+            'thumbnail' => 'required|image|max:10000',
         ]);
+        if ($request->hasFile("thumbnail")) {
+            $image = $request->file("thumbnail");
+            $name = str::slug($request->input('title')) . '_' . time();
+            $folder = 'uploads/thumbnail';
+            $filePath = $folder . '/' . $name . '.' . $image->getClientOriginalExtension();
+            $this->uploadOne($image, $folder, 'public', $name);
+            $imageSize = getimagesize(storage_path('app/public/' . $filePath));
+            $imageCompress = Image::make(storage_path('app/public/' . $filePath))->fit(round($imageSize[0] / 2.6), round($imageSize[1] / 2.6));;
+            $imageCompress->save();
+        }
         $post = new Post();
         $post->title = $request->title;
         $post->body = $request->body;
+        $post->props = json_encode(["thumbnail" => "storage/" . $filePath]);
         $post->user_id = Auth::user()->id;
         $post->save();
 

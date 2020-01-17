@@ -79,10 +79,10 @@
                 </div>
             </div>
             <div class="col-xl-12 col-md-12">
-                <div class="single_photography bradcam_bg" style="background-repeat: no-repeat; background-size: cover">
+                <div class="single_photography" style="background-repeat: no-repeat; background-size: cover; background-image: url('{{json_decode($posts->find(1)->props)->thumbnail}}');">
                     <div class="info">
                         <div class="info_inner">
-                            <h3><a href="#">Essential Photography: Back <br>
+                            <h3><a href="#">{{$posts->find(1)->title}}<br>
                                     Button Focus</a></h3>
                             <div class="date_catagory d-flex align-items-center justify-content-between">
                                 <span>12 jun 2019</span>
@@ -95,10 +95,10 @@
         </div>
         <div class="row mb-4 mt-4">
             <div class="col-xl-4 col-md-4">
-                <div class="single_photography photography_bg_1">
+                <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover; background-image: url('{{json_decode($posts->find(2)->props)->thumbnail}}');">
                     <div class="info">
                         <div class="info_inner">
-                            <h3><a href="#">Essential Photography: Back <br>
+                            <h3><a href="#">{{$posts->find(2)->title}} <br>
                                     Button Focus</a></h3>
                             <div class="date_catagory d-flex align-items-center justify-content-between">
                                 <span>12 jun 2019</span>
@@ -109,10 +109,10 @@
                 </div>
             </div>
             <div class="col-xl-4 col-md-4">
-                <div class="single_photography photography_bg_2">
+                <div class="single_photography photography_bg_2" style="background-repeat: no-repeat; background-size: cover; background-image: url('{{json_decode($posts->find(3)->props)->thumbnail}}');">
                     <div class="info">
                         <div class="info_inner">
-                            <h3><a href="#">Think Tank Photo Retrospective <br>
+                            <h3><a href="#">{{$posts->find(3)->title}} <br>
                                     Shoulder</a></h3>
                             <div class="date_catagory d-flex align-items-center justify-content-between">
                                 <span>12 jun 2019</span>
@@ -123,10 +123,10 @@
                 </div>
             </div>
             <div class="col-xl-4 col-md-4">
-                <div class="single_photography photography_bg_2">
+                <div class="single_photography photography_bg_2" style="background-repeat: no-repeat; background-size: cover; background-image: url('{{json_decode($posts->find(4)->props)->thumbnail}}');">
                     <div class="info">
                         <div class="info_inner">
-                            <h3><a href="#">Think Tank Photo Retrospective <br>
+                            <h3><a href="#">{{$posts->find(4)->title}} <br>
                                     Shoulder</a></h3>
                             <div class="date_catagory d-flex align-items-center justify-content-between">
                                 <span>12 jun 2019</span>
@@ -150,22 +150,24 @@
             </div>
             <div class="col-xl-8 col-md-8">
                 <div class="row">
-                    <div class="col-xl-6 col-md-6">
-                        <div class="single_blog">
-                            <div class="blog_thumb">
-                                <a href="#">
-                                    <img src="img/most_recent/2.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="blog_meta">
-                                <p><a href="#">Photography I 24 May 2019</a></p>
-                                <h3><a href="#">
-                                        The Desolate Beauty of <br>
-                                        Greenland
-                                    </a></h3>
+                    @foreach($posts as $post)
+                        <div class="col-xl-6 col-md-6">
+                            <div class="single_blog">
+                                <div class="blog_thumb">
+                                    <a href="#">
+                                        <img src="{{json_decode($post->props)->thumbnail}}" alt="">
+                                    </a>
+                                </div>
+                                <div class="blog_meta">
+                                    <p><a href="#">{{$post->title}}</a></p>
+                                    <h3><a href="#">
+                                            The Desolate Beauty of <br>
+                                            Greenland
+                                        </a></h3>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                     <div class="col-xl-6 col-md-6">
                         <div class="single_blog">
                             <div class="blog_thumb">
