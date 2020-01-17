@@ -29,11 +29,16 @@
                             <div class="block">
                                 <div class="title"><strong class="d-block">Create a tag</strong><span class="d-block">Lorem ipsum dolor sit amet consectetur.</span></div>
                                 <div class="block-body">
-                                    <form action="/admin/tag" method="post">
+                                    <form action="/admin/tag" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label class="form-control-label">Tag</label>
                                             <input type="name" name="name" placeholder="Tagname" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class=" form-control-label">Select Thumbnail</label>
+                                            <input type="file" name="thumbnail" class="form-control-file" id="exampleFormControlFile1">
+                                            <input type="name" placeholder="or input a image link" name="thumbnailLink" class="form-control" id="exampleFormControlFile1">
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" value="add" class="btn btn-primary">

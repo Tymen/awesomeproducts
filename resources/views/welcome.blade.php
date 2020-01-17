@@ -6,7 +6,6 @@
    <!--[if lte IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
-
     <div class="breadcam_area bradcam_bg overlay2">
         <div class="bradcam_text">
             <h3>Find your awesome product!</h3>
@@ -23,12 +22,16 @@
                 </div>
                 <div class="col-xl-12">
                     <div class="photoslider_active owl-carousel">
-                        <div class="single_photography">
-                            <img src="img/photography/single-1.jpg" alt="">
-                            <div class="photo_title">
-                                <h4>Photography</h4>
-                            </div>
-                        </div>
+                        @if(count($tags) > 0)
+                            @foreach($tags as $tag)
+                                <div class="single_photography">
+                                    <img src="{{$tag->imageSrc}}" alt="">
+                                    <div class="photo_title">
+                                        <h4>{{$tag->name}}</h4>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
                         <div class="single_photography">
                             <img src="img/photography/single-2.jpg" alt="">
                             <div class="photo_title">
@@ -59,6 +62,7 @@
                                 <h4>Travel Shot</h4>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -78,64 +82,100 @@
                     <h3>Populair</h3>
                 </div>
             </div>
-            <div class="col-xl-12 col-md-12">
-                <div class="single_photography" style="background-repeat: no-repeat; background-size: cover; background-image: url('{{json_decode($posts->find(1)->props)->thumbnail}}');">
-                    <div class="info">
-                        <div class="info_inner">
-                            <h3><a href="#">{{$posts->find(1)->title}}<br>
-                                    Button Focus</a></h3>
-                            <div class="date_catagory d-flex align-items-center justify-content-between">
-                                <span>12 jun 2019</span>
-                                <span class="catagory">lightroom</span>
+            @if($featPost)
+                <div class="col-xl-12 col-md-12">
+                    <div class="single_photography mainImage" style="background-repeat: no-repeat; background-size: cover; background-image: url('{{$featPost->thumbnail}}');">
+                        <div class="info">
+                            <div class="info_inner">
+                                <h3><a href="/post/{{$featPost->tags->first()->name}}/{{str_replace(' ', '_', $featPost->title)}}/{{$featPost->id}}">{{$featPost->title}}<br>
+                                        Button Focus</a></h3>
+                                <div class="date_catagory d-flex align-items-center justify-content-between">
+                                    <span>12 jun 2019</span>
+                                    <span class="catagory">lightroom</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @else
+                <div class="col-xl-12 col-md-12">
+                    <div class="single_photography mainImage" style="background-repeat: no-repeat; background-size: cover; background-image: url();">
+                        <div class="info">
+                            <div class="info_inner">
+                                <h3><a href="#">no post<br>
+                                        Button Focus</a></h3>
+                                <div class="date_catagory d-flex align-items-center justify-content-between">
+                                    <span>12 jun 2019</span>
+                                    <span class="catagory">lightroom</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
         <div class="row mb-4 mt-4">
-            <div class="col-xl-4 col-md-4">
-                <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover; background-image: url('{{json_decode($posts->find(2)->props)->thumbnail}}');">
-                    <div class="info">
-                        <div class="info_inner">
-                            <h3><a href="#">{{$posts->find(2)->title}} <br>
-                                    Button Focus</a></h3>
-                            <div class="date_catagory d-flex align-items-center justify-content-between">
-                                <span>12 jun 2019</span>
-                                <span class="catagory">lightroom</span>
+            @if(count($popPosts) > 0)
+            @foreach($popPosts as $popPost)
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover; background-image: url('{{$popPost->thumbnail}}');">
+                        <div class="info">
+                            <div class="info_inner">
+                                <h3><a href="#">{{$popPost->title}} <br>
+                                        Button Focus</a></h3>
+                                <div class="date_catagory d-flex align-items-center justify-content-between">
+                                    <span>12 jun 2019</span>
+                                    <span class="catagory">lightroom</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-md-4">
-                <div class="single_photography photography_bg_2" style="background-repeat: no-repeat; background-size: cover; background-image: url('{{json_decode($posts->find(3)->props)->thumbnail}}');">
-                    <div class="info">
-                        <div class="info_inner">
-                            <h3><a href="#">{{$posts->find(3)->title}} <br>
-                                    Shoulder</a></h3>
-                            <div class="date_catagory d-flex align-items-center justify-content-between">
-                                <span>12 jun 2019</span>
-                                <span class="catagory">lightroom</span>
+            @endforeach
+            @else
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover; background-image: url();">
+                        <div class="info">
+                            <div class="info_inner">
+                                <h3><a href="#">No post <br>
+                                        Button Focus</a></h3>
+                                <div class="date_catagory d-flex align-items-center justify-content-between">
+                                    <span>12 jun 2019</span>
+                                    <span class="catagory">lightroom</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-md-4">
-                <div class="single_photography photography_bg_2" style="background-repeat: no-repeat; background-size: cover; background-image: url('{{json_decode($posts->find(4)->props)->thumbnail}}');">
-                    <div class="info">
-                        <div class="info_inner">
-                            <h3><a href="#">{{$posts->find(4)->title}} <br>
-                                    Shoulder</a></h3>
-                            <div class="date_catagory d-flex align-items-center justify-content-between">
-                                <span>12 jun 2019</span>
-                                <span class="catagory">lightroom</span>
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover; background-image: url();">
+                        <div class="info">
+                            <div class="info_inner">
+                                <h3><a href="#">No post <br>
+                                        Button Focus</a></h3>
+                                <div class="date_catagory d-flex align-items-center justify-content-between">
+                                    <span>12 jun 2019</span>
+                                    <span class="catagory">lightroom</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover; background-image: url();">
+                        <div class="info">
+                            <div class="info_inner">
+                                <h3><a href="#">No post <br>
+                                        Button Focus</a></h3>
+                                <div class="date_catagory d-flex align-items-center justify-content-between">
+                                    <span>12 jun 2019</span>
+                                    <span class="catagory">lightroom</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </div>
@@ -150,24 +190,26 @@
             </div>
             <div class="col-xl-8 col-md-8">
                 <div class="row">
+                    @if($posts)
                     @foreach($posts as $post)
                         <div class="col-xl-6 col-md-6">
                             <div class="single_blog">
                                 <div class="blog_thumb">
                                     <a href="#">
-                                        <img src="{{json_decode($post->props)->thumbnail}}" alt="">
+                                        <img class="img-fluid" src="{{$post->thumbnail}}" alt="">
                                     </a>
                                 </div>
                                 <div class="blog_meta">
-                                    <p><a href="#">{{$post->title}}</a></p>
+                                    <p><a href="#">{{$post->tags->first()->name}}</a></p>
                                     <h3><a href="#">
-                                            The Desolate Beauty of <br>
+                                            {{$post->title}} <br>
                                             Greenland
                                         </a></h3>
                                 </div>
                             </div>
                         </div>
                     @endforeach
+                    @endif
                     <div class="col-xl-6 col-md-6">
                         <div class="single_blog">
                             <div class="blog_thumb">

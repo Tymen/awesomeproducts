@@ -29,3 +29,4 @@ Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
     Route::resource('/post', "PostController");
 });
 Route::get('/profile', 'HomeController@index')->name('home');
+Route::get('/post/{tag}/{title}/{id}', "Admin\PostController@show");

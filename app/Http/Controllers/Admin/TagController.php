@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\tag;
+use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+
 class TagController extends Controller
 {
+    use UploadTrait;
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +43,26 @@ class TagController extends Controller
         $request->validate([
             'name' => 'required|max:255',
         ]);
+
+        if ($request->hasFile("thumbnail")) {
+            $image = $request->file("thumbnail");
+            $name = str::slug($request->input('title')) . '_' . time();
+            $folder = 'uploads/tag/thumbnail';
+            $filePath = $folder . '/' . $name . '.' . $image->getClientOriginalExtension();
+            $this->uploadOne($image, $folder, 'public', $name);
+            $imageSize = getimagesize(storage_path('app/public/' . $filePath));
+            $imageCompress = Image::make(storage_path('app/public/' . $filePath))->fit(round($imageSize[0] / 2.6), round($imageSize[1] / 2.6));
+            $imageCompress->save();
+            $imgCrop = Image::make(storage_path('app/public/' . $filePath))->crop(720, 720);
+            $imgCrop->save();
+            $thumb = "storage/" . $filePath;
+        }elseif ($request->has('thumbnailLink')){
+            $thumb = $request->thumbnailLink;
+        }else {
+            $thumb = "";
+        }
         $tag = new Tag();
+        $tag->imageSrc = $thumb;
         $tag->name = $request->name;
         $tag->save();
         return redirect('/admin/tag');

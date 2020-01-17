@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Post;
+use App\Products;
 use App\Tag;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
@@ -45,6 +46,7 @@ class PostController extends Controller
         $request->validate([
 
         ]);
+        // Thumbnail
         if ($request->hasFile("thumbnail")) {
             $image = $request->file("thumbnail");
             $name = str::slug($request->input('title')) . '_' . time();
@@ -60,6 +62,17 @@ class PostController extends Controller
         }else {
             $thumb = "";
         }
+        // Creating the post
+        $post = new Post();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->thumbnail = $thumb;
+        $post->user_id = Auth::user()->id;
+        $post->save();
+
+        $post->tags()->sync($request->tags, false);
+
+        // Product info
         $docName = str::slug($request->input('title')) . '_' . time();
         $blogSize = 5;
         $object = [];
@@ -85,22 +98,14 @@ class PostController extends Controller
             }else {
                 $prodProccedLink = "";
             }
-            $product = "product_" . $x;
-            $object[$product] = [
-                "titleProd_" => $request->$prodTitle,
-                "productImage" => $prodProccedLink,
-                "productLink" => $request->$prodLink,
-                "productBody" => $request->$prodBody
-            ];
+            $newProduct = new Products();
+            $newProduct->title = $request->$prodTitle;
+            $newProduct->image = $prodProccedLink;
+            $newProduct->link = $request->$prodLink;
+            $newProduct->body = $request->$prodBody;
+            $newProduct->post_id = $post->id;
+            $newProduct->save();
         }
-        $post = new Post();
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->props = json_encode($object);
-        $post->user_id = Auth::user()->id;
-        $post->save();
-
-        $post->tags()->sync($request->tags, false);
         return redirect("/admin/post");
     }
 
@@ -110,9 +115,9 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Post $post, $tag, $title, $id)
     {
-        //
+        return view("blogLayout.layout5")->with('post', Post::find($id));
     }
 
     /**
