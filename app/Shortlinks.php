@@ -4,14 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Products extends Model
+class Shortlinks extends Model
 {
     public function post()
     {
         return $this->belongsTo(Post::class);
-    }
-    public function shortlink()
-    {
-        return $this->hasOne(Shortlinks::class);
     }
 }

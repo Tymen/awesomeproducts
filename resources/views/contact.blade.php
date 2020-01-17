@@ -2,6 +2,9 @@
 @section('docTitle')
     Contact
 @endsection
+@section("activeContact")
+    active
+@endsection
 @section("content")
 <!-- breadcam_area_start -->
 <div class="breadcam_area bradcam_bg overlay2">

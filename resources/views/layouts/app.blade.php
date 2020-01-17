@@ -92,16 +92,26 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="/">Home</a></li>
-                                        <li><a href="/category">catagory</a></li>
-                                        <li><a href="/about">About</a></li>
-                                        <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                                        <li><a class="@yield("activeHome")" href="/">Home</a></li>
+                                        <li><a class="@yield("activeCatg")" href="/category">catagory</a></li>
+                                        <li><a @yield("activeAbout") href="/about">About</a></li>
+                                        <li><a @yield("active") href="#">pages <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="/elements">elements</a></li>
-                                                <li><a href="/blog">single-blog</a></li>
+                                                <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                                                @if (count(Auth::user()->Role->where("name", "admin")->all()) > 0)
+                                                    <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
+                                                @endif
+                                                <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                                       onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                                    </a></li>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
                                             </ul>
                                         </li>
-                                        <li><a href="/contact">Contact</a></li>
+                                        <li><a @yield("activeContact") href="/contact">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -257,14 +267,14 @@
     <script src="/js/jquery.slicknav.min.js"></script>
     <script src="/js/jquery.magnific-popup.min.js"></script>
     <script src="/js/plugins.js"></script>
-/
+
     <!--contact j/s-->
     <script src="/js/contact.js"></script>
     <script src="/js/jquery.ajaxchimp.min.js"></script>
     <script src="/js/jquery.form.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/mail-script.js"></script>
-/
+
     <script src="/js/main.js"></script>
 </body>
 </html>

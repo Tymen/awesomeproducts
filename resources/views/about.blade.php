@@ -2,11 +2,19 @@
 @section('docTitle')
     About
 @endsection
+@section("activeAbout")
+    active
+    @endsection
 @section("content")
 <!--[if lte IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
 <!-- about_area_start -->
+<div class="breadcam_area bradcam_bg overlay2">
+    <div class="bradcam_text">
+        <h3>About this website!</h3>
+    </div>
+</div>
 <div class="about_area">
     <div class="container">
         <div class="row">
@@ -60,7 +68,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="modarator_title">
-                    <h3>Our Moderators</h3>
+                    <h3>Our Team</h3>
                 </div>
             </div>
         </div>
@@ -78,8 +86,8 @@
                         </div>
                     </div>
                     <div class="moderator_name">
-                        <h3>Jack Piller</h3>
-                        <p>Photographer at COk</p>
+                        <h3>Tymen vis</h3>
+                        <p>Founder | Web Developer</p>
                     </div>
                 </div>
             </div>
@@ -96,44 +104,8 @@
                         </div>
                     </div>
                     <div class="moderator_name">
-                        <h3>Macau Wilium</h3>
-                        <p>Photographer at COk</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-3">
-                <div class="single_modarators">
-                    <div class="moderator_thumb">
-                        <img src="img/team/3.png" alt="">
-                        <div class="author_links">
-                            <ul>
-                                <li><a href="#"> <i class="fa fa-envelope"></i> </a></li>
-                                <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
-                                <li><a href="#"> <i class="fa fa-linkedin-square"></i> </a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="moderator_name">
-                        <h3>Ander Doe</h3>
-                        <p>Photographer at COk</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-3">
-                <div class="single_modarators">
-                    <div class="moderator_thumb">
-                        <img src="img/team/4.png" alt="">
-                        <div class="author_links">
-                            <ul>
-                                <li><a href="#"> <i class="fa fa-envelope"></i> </a></li>
-                                <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
-                                <li><a href="#"> <i class="fa fa-linkedin-square"></i> </a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="moderator_name">
-                        <h3>Clurk Amila</h3>
-                        <p>Photographer at COk</p>
+                        <h3>Erik van de reest</h3>
+                        <p>Co-Founder | Web Developer</p>
                     </div>
                 </div>
             </div>

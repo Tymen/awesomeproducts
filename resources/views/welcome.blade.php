@@ -2,6 +2,9 @@
 @section('docTitle')
     Home
 @endsection
+@section("activeHome")
+    active
+@endsection
 @section('content')
    <!--[if lte IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -336,11 +339,9 @@
                     </div>
                     <div class="tags">
                         <ul>
-                            <li><a href="#">camera</a></li>
-                            <li><a href="#">photography</a></li>
-                            <li><a href="#">lens</a></li>
-                            <li><a href="#">blog</a></li>
-                            <li><a href="#">magazine</a></li>
+                            @foreach($tags as $tag)
+                                <li><a href="#">{{$tag->name}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
