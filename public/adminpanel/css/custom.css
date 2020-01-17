@@ -2,3 +2,10 @@
 .selection {
     display: block;
 }
+.select2-container {
+    width: 100%!important;
+}
+textarea {
+    resize: none;
+    min-height: 200px;
+}

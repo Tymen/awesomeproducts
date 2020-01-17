@@ -43,9 +43,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:255',
-            'tags.*' => 'required',
-            'thumbnail' => 'required|image|max:10000',
+
         ]);
         if ($request->hasFile("thumbnail")) {
             $image = $request->file("thumbnail");
@@ -56,11 +54,49 @@ class PostController extends Controller
             $imageSize = getimagesize(storage_path('app/public/' . $filePath));
             $imageCompress = Image::make(storage_path('app/public/' . $filePath))->fit(round($imageSize[0] / 2.6), round($imageSize[1] / 2.6));;
             $imageCompress->save();
+            $thumb = "storage/" . $filePath;
+        }elseif ($request->has('thumbnailLink')){
+            $thumb = $request->thumbnailLink;
+        }else {
+            $thumb = "";
+        }
+        $docName = str::slug($request->input('title')) . '_' . time();
+        $blogSize = 5;
+        $object = [];
+        $object["thumbnail"] = $thumb;
+        for ($x = 1; $x <= $blogSize; $x++) {
+            $prodTitle = "titleProd_" . $x;
+            $prodLink = "affLink_" . $x;
+            $prodImage = "product_" . $x;
+            $prodImageLink = "productLink_" . $x;
+            $prodBody = "bodyProd_" . $x;
+            if ($request->hasFile($prodImage)) {
+                $image = $request->file($prodImage);
+                $name = str::slug($request->input("titleProd_" . $x)) . '_' . time();
+                $folder = 'uploads/posts/' . $docName;
+                $filePath = $folder . '/' . $name . '.' . $image->getClientOriginalExtension();
+                $this->uploadOne($image, $folder, 'public', $name);
+                $imageSize = getimagesize(storage_path('app/public/' . $filePath));
+                $imageCompress = Image::make(storage_path('app/public/' . $filePath))->fit(round($imageSize[0] / 1.2), round($imageSize[1] / 1.2));;
+                $imageCompress->save();
+                $prodProccedLink = "storage/" . $filePath;
+            }elseif ($request->has($prodImageLink)) {
+                $prodProccedLink = $request->$prodImageLink;
+            }else {
+                $prodProccedLink = "";
+            }
+            $product = "product_" . $x;
+            $object[$product] = [
+                "titleProd_" => $request->$prodTitle,
+                "productImage" => $prodProccedLink,
+                "productLink" => $request->$prodLink,
+                "productBody" => $request->$prodBody
+            ];
         }
         $post = new Post();
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->props = json_encode(["thumbnail" => "storage/" . $filePath]);
+        $post->props = json_encode($object);
         $post->user_id = Auth::user()->id;
         $post->save();
 
