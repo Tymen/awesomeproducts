@@ -66,9 +66,11 @@
                                     <div class="dropdown-menu">
                                         <ul class="submenu">
                                             <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                                            @if(Auth::check())
                                                 @if (count(Auth::user()->Role->where("name", "admin")->all()) > 0)
                                                     <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
                                                 @endif
+                                            @endif
                                             <li><a class="dropdown-item" href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
@@ -98,8 +100,10 @@
                                         <li><a @yield("active") href="#">pages <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                                                @if (count(Auth::user()->Role->where("name", "admin")->all()) > 0)
-                                                    <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
+                                                @if(Auth::check())
+                                                    @if (count(Auth::user()->Role->where("name", "admin")->all()) > 0)
+                                                        <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
+                                                    @endif
                                                 @endif
                                                 <li><a class="dropdown-item" href="{{ route('logout') }}"
                                                        onclick="event.preventDefault();
