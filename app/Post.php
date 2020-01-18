@@ -18,4 +18,8 @@ class Post extends Model
     {
         return $this->hasMany(Products::class);
     }
+    public function shortlink()
+    {
+        return $this->hasMany(Shortlinks::class);
+    }
 }

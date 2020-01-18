@@ -9,3 +9,6 @@ textarea {
     resize: none;
     min-height: 200px;
 }
+.link:hover {
+    color: grey;
+}

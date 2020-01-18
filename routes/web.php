@@ -14,10 +14,11 @@
 
 Route::get('/', "PagesController@index");
 Route::get('/about', "PagesController@about");
-Route::get('/category', "PagesController@category");
+Route::get('/tag/{tag?}', "PagesController@tag");
 Route::get('/elements', "PagesController@elements");
 Route::get('/contact', "PagesController@contact");
 Route::get('/blog', "PagesController@blog");
+
 Auth::routes();
 
 Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
@@ -30,3 +31,4 @@ Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
 });
 Route::get('/profile', 'HomeController@index')->name('home');
 Route::get('/post/{tag}/{title}/{id}', "Admin\PostController@show");
+Route::get('/link/{title}/{id}', "ShortLinkController@redirect");

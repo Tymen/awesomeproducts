@@ -15,6 +15,12 @@ class CreateShortlinksTable extends Migration
     {
         Schema::create('shortlinks', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->longText('idlink');
+            $table->longText('link');
+            $table->integer('products_id')->unsigned();
+            $table->foreign('products_id')->references('id')->on('products');
+            $table->integer('post_id')->unsigned();
+            $table->foreign('post_id')->references('id')->on('posts');
             $table->timestamps();
         });
     }

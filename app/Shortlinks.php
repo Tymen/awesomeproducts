@@ -10,4 +10,8 @@ class Shortlinks extends Model
     {
         return $this->belongsTo(Post::class);
     }
+    public function product()
+    {
+        return $this->belongsTo(Products::class);
+    }
 }

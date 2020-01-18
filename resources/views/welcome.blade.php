@@ -28,10 +28,12 @@
                         @if(count($tags) > 0)
                             @foreach($tags as $tag)
                                 <div class="single_photography">
-                                    <img src="{{$tag->imageSrc}}" alt="">
-                                    <div class="photo_title">
-                                        <h4>{{$tag->name}}</h4>
-                                    </div>
+                                    <a href="/tag/{{$tag->name}}">
+                                        <img src="{{$tag->imageSrc}}" alt="">
+                                        <div class="photo_title">
+                                            <h4>{{$tag->name}}</h4>
+                                        </div>
+                                    </a>
                                 </div>
                             @endforeach
                         @else
@@ -102,7 +104,7 @@
                 </div>
             @else
                 <div class="col-xl-12 col-md-12">
-                    <div class="single_photography mainImage" style="background-repeat: no-repeat; background-size: cover; background-image: url();">
+                    <div class="single_photography mainImage" style="background-repeat: no-repeat; background-size: cover;">
                         <div class="info">
                             <div class="info_inner">
                                 <h3><a href="#">no post<br>
@@ -121,10 +123,10 @@
             @if(count($popPosts) > 0)
             @foreach($popPosts as $popPost)
                 <div class="col-xl-4 col-md-4">
-                    <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover; background-image: url('{{$popPost->thumbnail}}');">
+                    <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover; background-image: url('{{$popPost->thumbnail}}'); background-position: center;">
                         <div class="info">
                             <div class="info_inner">
-                                <h3><a href="#">{{$popPost->title}} <br>
+                                <h3><a href="/post/{{$popPost->tags->first()->name}}/{{str_replace(' ', '_', $popPost->title)}}/{{$popPost->id}}">{{$popPost->title}} <br>
                                         Button Focus</a></h3>
                                 <div class="date_catagory d-flex align-items-center justify-content-between">
                                     <span>12 jun 2019</span>
@@ -137,7 +139,7 @@
             @endforeach
             @else
                 <div class="col-xl-4 col-md-4">
-                    <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover; background-image: url();">
+                    <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover;">
                         <div class="info">
                             <div class="info_inner">
                                 <h3><a href="#">No post <br>
@@ -151,7 +153,7 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-4">
-                    <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover; background-image: url();">
+                    <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover;">
                         <div class="info">
                             <div class="info_inner">
                                 <h3><a href="#">No post <br>
@@ -165,7 +167,7 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-4">
-                    <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover; background-image: url();">
+                    <div class="single_photography photography_bg_1" style="background-repeat: no-repeat; background-size: cover;">
                         <div class="info">
                             <div class="info_inner">
                                 <h3><a href="#">No post <br>
@@ -198,13 +200,13 @@
                         <div class="col-xl-6 col-md-6">
                             <div class="single_blog">
                                 <div class="blog_thumb">
-                                    <a href="#">
+                                    <a href="/post/{{$post->tags->first()->name}}/{{str_replace(' ', '_', $post->title)}}/{{$post->id}}">
                                         <img class="img-fluid" src="{{$post->thumbnail}}" alt="">
                                     </a>
                                 </div>
                                 <div class="blog_meta">
-                                    <p><a href="#">{{$post->tags->first()->name}}</a></p>
-                                    <h3><a href="#">
+                                    <p><a href="/post/{{$post->tags->first()->name}}/{{str_replace(' ', '_', $post->title)}}/{{$post->id}}">{{$post->tags->first()->name}}</a></p>
+                                    <h3><a href="/post/{{$post->tags->first()->name}}/{{str_replace(' ', '_', $post->title)}}/{{$post->id}}">
                                             {{$post->title}} <br>
                                             Greenland
                                         </a></h3>
@@ -340,7 +342,7 @@
                     <div class="tags">
                         <ul>
                             @foreach($tags as $tag)
-                                <li><a href="#">{{$tag->name}}</a></li>
+                                <li><a href="/tag/{{$tag->name}}">{{$tag->name}}</a></li>
                             @endforeach
                         </ul>
                     </div>

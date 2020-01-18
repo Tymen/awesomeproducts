@@ -16,42 +16,49 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="photoslider_active owl-carousel">
-                    <div class="single_photography">
-                        <img src="img/photography/single-1.jpg" alt="">
-                        <div class="photo_title">
-                            <h4>Photography</h4>
+                    @if(count($tags) > 0)
+                        @foreach($tags as $tag)
+                            <div class="single_photography">
+                                <a href="/tag/{{$tag->name}}">
+                                    <img src="{{$tag->imageSrc}}" alt="">
+                                    <div class="photo_title">
+                                        <h4>{{$tag->name}}</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="single_photography">
+                            <img src="img/photography/single-2.jpg" alt="">
+                            <div class="photo_title">
+                                <h4>Travel Shot</h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="single_photography">
-                        <img src="img/photography/single-2.jpg" alt="">
-                        <div class="photo_title">
-                            <h4>Travel Shot</h4>
+                        <div class="single_photography">
+                            <img src="img/photography/single-3.jpg" alt="">
+                            <div class="photo_title">
+                                <h4>Photoshop</h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="single_photography">
-                        <img src="img/photography/single-3.jpg" alt="">
-                        <div class="photo_title">
-                            <h4>Photoshop</h4>
+                        <div class="single_photography">
+                            <img src="img/photography/single-4.jpg" alt="">
+                            <div class="photo_title">
+                                <h4>Lens</h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="single_photography">
-                        <img src="img/photography/single-4.jpg" alt="">
-                        <div class="photo_title">
-                            <h4>Lens</h4>
+                        <div class="single_photography">
+                            <img src="img/photography/single-1.jpg" alt="">
+                            <div class="photo_title">
+                                <h4>Photography</h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="single_photography">
-                        <img src="img/photography/single-1.jpg" alt="">
-                        <div class="photo_title">
-                            <h4>Photography</h4>
+                        <div class="single_photography">
+                            <img src="img/photography/single-2.jpg" alt="">
+                            <div class="photo_title">
+                                <h4>Travel Shot</h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="single_photography">
-                        <img src="img/photography/single-2.jpg" alt="">
-                        <div class="photo_title">
-                            <h4>Travel Shot</h4>
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -70,27 +77,31 @@
             </div>
             <div class="col-xl-8 col-md-8">
                 <div class="row">
+                    @if($posts)
+                        @foreach($posts as $post)
+                            <div class="col-xl-6 col-md-6">
+                                <div class="single_blog">
+                                    <div class="blog_thumb">
+                                        <a href="/post/{{$post->tags->first()->name}}/{{str_replace(' ', '_', $post->title)}}/{{$post->id}}">
+                                            <img class="img-fluid" src="{{$post->thumbnail}}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="blog_meta">
+                                        <p><a href="/post/{{$post->tags->first()->name}}/{{str_replace(' ', '_', $post->title)}}/{{$post->id}}">{{$post->tags->first()->name}}</a></p>
+                                        <h3><a href="/post/{{$post->tags->first()->name}}/{{str_replace(' ', '_', $post->title)}}/{{$post->id}}">
+                                                {{$post->title}} <br>
+                                                Greenland
+                                            </a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
                     <div class="col-xl-6 col-md-6">
                         <div class="single_blog">
                             <div class="blog_thumb">
                                 <a href="#">
-                                    <img src="img/most_recent/2.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="blog_meta">
-                                <p><a href="#">Photography I 24 May 2019</a></p>
-                                <h3><a href="#">
-                                        The Desolate Beauty of <br>
-                                        Greenland
-                                    </a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6">
-                        <div class="single_blog">
-                            <div class="blog_thumb">
-                                <a href="#">
-                                    <img src="img/most_recent/1.jpg" alt="">
+                                    <img src="/img/most_recent/1.jpg" alt="">
                                 </a>
                             </div>
                             <div class="blog_meta">
@@ -106,7 +117,7 @@
                         <div class="single_blog">
                             <div class="blog_thumb">
                                 <a href="#">
-                                    <img src="img/most_recent/3.jpg" alt="">
+                                    <img src="/img/most_recent/3.jpg" alt="">
                                 </a>
                             </div>
                             <div class="blog_meta">
@@ -122,7 +133,7 @@
                         <div class="single_blog">
                             <div class="blog_thumb">
                                 <a href="#">
-                                    <img src="img/most_recent/4.jpg" alt="">
+                                    <img src="/img/most_recent/4.jpg" alt="">
                                 </a>
                             </div>
                             <div class="blog_meta">
@@ -138,7 +149,7 @@
                         <div class="single_blog">
                             <div class="blog_thumb">
                                 <a href="#">
-                                    <img src="img/most_recent/5.jpg" alt="">
+                                    <img src="/img/most_recent/5.jpg" alt="">
                                 </a>
                             </div>
                             <div class="blog_meta">
@@ -154,7 +165,7 @@
                         <div class="single_blog">
                             <div class="blog_thumb">
                                 <a href="#">
-                                    <img src="img/most_recent/6.jpg" alt="">
+                                    <img src="/img/most_recent/6.jpg" alt="">
                                 </a>
                             </div>
                             <div class="blog_meta">

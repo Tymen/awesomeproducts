@@ -28,9 +28,14 @@ class PagesController extends Controller
     {
         return view('elements');
     }
-    public function category()
+    public function tag($tag)
     {
-        return view('category');
+        if($tag){
+            if (count(Tag::all()->where("name", $tag)) > 0) {
+                return view('category')->with("tags", Tag::all())->with("posts", Tag::all()->where("name", $tag)->first()->post);
+            }
+        }
+        return view('category')->with("tags", Tag::all())->with("posts", Post::all());
     }
     public function blog()
     {

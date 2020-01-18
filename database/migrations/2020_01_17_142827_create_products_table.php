@@ -15,10 +15,11 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('prod_id');
             $table->string('title');
-            $table->string('image');
-            $table->string('link');
-            $table->string('body');
+            $table->longText('image');
+            $table->longText('link');
+            $table->longText('body');
             $table->integer('post_id')->unsigned();
             $table->foreign('post_id')->references('id')->on('posts');
             $table->timestamps();

@@ -95,7 +95,7 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="@yield("activeHome")" href="/">Home</a></li>
-                                        <li><a class="@yield("activeCatg")" href="/category">catagory</a></li>
+                                        <li><a class="@yield("activeCatg")" href="/tag">catagory</a></li>
                                         <li><a @yield("activeAbout") href="/about">About</a></li>
                                         <li><a @yield("active") href="#">pages <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">

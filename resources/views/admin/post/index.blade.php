@@ -27,6 +27,9 @@
                     <div class="col-lg-12">
                         <div class="block">
                             <div class="title"><strong>Posts</strong></div>
+                            <div class="form-group">
+                                <a class="form-control link" href="/admin/post/create" style="text-align: center" class="btn btn-primary">create</a>
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-sm">
                                     <thead>
