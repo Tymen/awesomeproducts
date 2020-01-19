@@ -52,6 +52,16 @@
                                                 </ul>
                                             </div>
                                         @endif
+                                        <div class="form-check">
+                                            @if($post->enabled == 1)
+                                                <input class="form-check-input" type="checkbox" value="checked" checked name="enabled" id="defaultCheck1">
+                                            @else
+                                                <input class="form-check-input" type="checkbox" value="checked" name="enabled" id="defaultCheck1">
+                                            @endif
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                Enabled
+                                            </label>
+                                        </div>
                                         <div class="form-group">
                                             <label class="form-control-label">Title</label>
                                             <input type="name" name="title" placeholder="title" value="{{$post->title}}" class="form-control">

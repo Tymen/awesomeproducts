@@ -27,6 +27,16 @@
                     <div class="col-lg-12">
                         <div class="block">
                             <div class="title"><strong>User Accounts</strong></div>
+                            @if($alert)
+                                <div class="alert alert-success" role="alert">
+                                    {{$alert}}
+                                </div>
+                            @endif
+                            @if($errorMessage)
+                                <div class="alert alert-danger" role="alert">
+                                    {{$errorMessage}}
+                                </div>
+                            @endif
                             <div class="form-group">
                                 <a class="form-control link" href="/admin/users/create" style="text-align: center" class="btn btn-primary">create</a>
                             </div>

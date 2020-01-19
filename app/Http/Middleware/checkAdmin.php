@@ -19,8 +19,9 @@ class checkAdmin
     {
         if (Auth::check())
         {
-            $getRoles = Auth::user()->Role->where("name", "admin")->all();
-            if (count($getRoles) > 0) {
+            $getAdmin = Auth::user()->Role->where("name", "admin")->all();
+            $getSuperUser = Auth::user()->Role->where("name", "superuser")->all();
+            if (count($getAdmin) > 0 || count($getSuperUser) > 0) {
                 return $next($request);
             }
         }

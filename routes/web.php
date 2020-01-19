@@ -24,8 +24,7 @@ Auth::routes();
 Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
     Route::get('/', "AdminController@index");
     Route::get('/users', "AdminController@users");
-    Route::get('/users/{id}/edit', "AdminController@usersEdit");
-    Route::post('/users/{id}', "AdminController@usersStore");
+    Route::resource('/users', "UserController");
     Route::resource('/tag', "TagController");
     Route::resource('/post', "PostController");
 });

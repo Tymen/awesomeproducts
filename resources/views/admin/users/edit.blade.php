@@ -14,14 +14,14 @@
         <!-- Page Header-->
         <div class="page-header no-margin-bottom">
             <div class="container-fluid">
-                <h2 class="h5 no-margin-bottom">Create a user</h2>
+                <h2 class="h5 no-margin-bottom">Create a tag</h2>
             </div>
         </div>
         <!-- Breadcrumb-->
         <div class="container-fluid">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">Create user           </li>
+                <li class="breadcrumb-item active">Edit user           </li>
             </ul>
         </div>
         <section class="no-padding-top">
@@ -30,13 +30,14 @@
                     <!-- Basic Form-->
                     <div class="col-lg-12">
                         <div class="block">
-                            <div class="title"><strong class="d-block">Create user</strong><span class="d-block"></span></div>
+                            <div class="title"><strong class="d-block">Edit user: {{$user->name}}</strong><span class="d-block"></span></div>
                             <div class="block-body">
-                                <form class="col-6" action="/admin/users/" method="post">
+                                <form class="col-6" action="/admin/users/{{$user->id}}" method="post">
                                     @csrf
+                                    @method("PUT")
                                     <div class="form-group">
                                         <span class="form-control-label">Name</span>
-                                        <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}" required autocomplete="name" autofocus>
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -45,7 +46,7 @@
                                     </div>
                                     <div class="form-group">
                                         <span class="form-control-label">Email</span>
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email">
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -102,5 +103,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
     <script>
         $("#e9").select2();
+        $('#e9').val([@foreach($user->role as $selrole)'{{$selrole->id}}',@endforeach]); // Select the option with a value of '1'
+        $('#e9').trigger('change');
     </script>
 @endsection

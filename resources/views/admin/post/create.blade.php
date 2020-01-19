@@ -44,6 +44,12 @@
                                                 </ul>
                                             </div>
                                         @endif
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="checked"  checked name="enabled" id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    Enabled
+                                                </label>
+                                            </div>
                                         <div class="form-group">
                                             <label class="form-control-label">Title</label>
                                             <input type="name" name="title" placeholder="title" class="form-control">

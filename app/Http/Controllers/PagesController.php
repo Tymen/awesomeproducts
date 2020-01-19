@@ -11,9 +11,9 @@ class PagesController extends Controller
     public function index()
     {
         return view('welcome')
-            ->with("posts", Post::orderBy('created_at', 'desc')->paginate(6))
-            ->with("popPosts", Post::orderBy('created_at', 'desc')->paginate(3))
-            ->with("featPost", Post::find(1))
+            ->with("posts", Post::where("enabled", 1)->orderBy('created_at', 'desc')->paginate(6))
+            ->with("popPosts", Post::where("enabled", 1)->orderBy('created_at', 'desc')->paginate(3))
+            ->with("featPost", Post::where("enabled", 1)->find(1))
             ->with("tags", Tag::all());
     }
     public function about()

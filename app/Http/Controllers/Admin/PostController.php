@@ -76,8 +76,13 @@ class PostController extends Controller
         }else {
             $thumb = "";
         }
+        $enabled = 0;
+        if($request->enabled){
+            $enabled = 1;
+        }
         // Creating the post
         $post = new Post();
+        $post->enabled = $enabled;
         $post->title = $request->title;
         $post->body = $request->body;
         $post->thumbnail = $thumb;
@@ -169,8 +174,9 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $getRoles = Auth::user()->Role->where("name", "admin")->all();
-        if (count($getRoles) > 0) {
+        $getAdmin = Auth::user()->Role->where("name", "admin")->all();
+        $getSuperUser = Auth::user()->Role->where("name", "superuser")->all();
+        if (count($getAdmin) > 0 || count($getSuperUser) > 0) {
             if ($request->hasFile("thumbnail")) {
                 $image = $request->file("thumbnail");
                 $name = str::slug($request->input('title')) . '_' . time();
@@ -186,7 +192,12 @@ class PostController extends Controller
             }else {
                 $thumb = "";
             }
+            $enabled = 0;
+            if($request->enabled){
+                $enabled = 1;
+            }
             $post->title = $request->title;
+            $post->enabled = $enabled;
             $post->body = $request->body;
             $post->thumbnail = $thumb;
             $post->save();

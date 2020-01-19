@@ -67,7 +67,7 @@
                                         <ul class="submenu">
                                             <li><a class="dropdown-item" href="/profile">Profile</a></li>
                                             @if(Auth::check())
-                                                @if (count(Auth::user()->Role->where("name", "admin")->all()) > 0)
+                                                @if (count(Auth::user()->Role->where("name", "admin")->all()) > 0 || count(Auth::user()->Role->where("name", "superuser")->all()))
                                                     <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
                                                 @endif
                                             @endif
@@ -101,7 +101,7 @@
                                             <ul class="submenu">
                                                 <li><a class="dropdown-item" href="/profile">Profile</a></li>
                                                 @if(Auth::check())
-                                                    @if (count(Auth::user()->Role->where("name", "admin")->all()) > 0)
+                                                    @if (count(Auth::user()->Role->where("name", "admin")->all()) > 0 || count(Auth::user()->Role->where("name", "superuser")->all()) > 0 )
                                                         <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
                                                     @endif
                                                 @endif

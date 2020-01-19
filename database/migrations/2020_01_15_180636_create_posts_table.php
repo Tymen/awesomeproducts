@@ -15,6 +15,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->boolean('enabled');
             $table->string('title');
             $table->longText('body');
             $table->text('thumbnail');
