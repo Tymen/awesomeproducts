@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\tag;
+use App\Tag;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

@@ -28,7 +28,7 @@ class PagesController extends Controller
     {
         return view('elements');
     }
-    public function tag($tag)
+    public function tag($tag = null)
     {
         if($tag){
             if (count(Tag::all()->where("name", $tag)) > 0) {
