@@ -203,6 +203,7 @@
                     <li><a href="/admin/users/create">Create</a></li>
                 </ul>
             </li>
+        </ul>
 {{--            <li><a href="/admin"> <i class="icon-grid"></i>Tables </a></li>--}}
 {{--            <li><a href="/admin"> <i class="fa fa-bar-chart"></i>Charts </a></li>--}}
 {{--            <li><a href="/admin"> <i class="icon-padnote"></i>Forms </a></li>--}}
