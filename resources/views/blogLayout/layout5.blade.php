@@ -61,43 +61,45 @@
                         </div>
                         <div class="navigation-area">
                             <div class="row">
-                                <div
-                                    class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                                    <div class="thumb">
-                                        <a href="#">
-                                            <img class="img-fluid" src="/img/post/preview.png" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="arrow">
-                                        <a href="#">
-                                            <span class="lnr text-white ti-arrow-left"></span>
-                                        </a>
-                                    </div>
-                                    <div class="detials">
-                                        <p>Prev Post</p>
-                                        <a href="#">
-                                            <h4>Space The Final Frontier</h4>
-                                        </a>
-                                    </div>
+                                <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                    @if($previous)
+                                        <div class="thumb">
+                                            <a href="/post/{{$previous->tags->first()->name}}/{{str_replace(' ', '_', $previous->title)}}/{{$previous->id}}">
+                                                <img class="img-fluid" src="/img/post/preview.png" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="arrow">
+                                            <a href="/post/{{$previous->tags->first()->name}}/{{str_replace(' ', '_', $previous->title)}}/{{$previous->id}}">
+                                                <span class="lnr text-white ti-arrow-left"></span>
+                                            </a>
+                                        </div>
+                                        <div class="detials">
+                                            <p>Prev Post</p>
+                                            <a href="/post/{{$previous->tags->first()->name}}/{{str_replace(' ', '_', $previous->title)}}/{{$previous->id}}">
+                                                <h4>{{$previous->title}}</h4>
+                                            </a>
+                                        </div>
+                                    @endif
                                 </div>
-                                <div
-                                    class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                                    <div class="detials">
-                                        <p>Next Post</p>
-                                        <a href="#">
-                                            <h4>Telescopes 101</h4>
-                                        </a>
-                                    </div>
-                                    <div class="arrow">
-                                        <a href="#">
-                                            <span class="lnr text-white ti-arrow-right"></span>
-                                        </a>
-                                    </div>
-                                    <div class="thumb">
-                                        <a href="#">
-                                            <img class="img-fluid" src="/img/post/next.png" alt="">
-                                        </a>
-                                    </div>
+                                <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                                    @if($next)
+                                        <div class="detials">
+                                            <p>Next Post</p>
+                                            <a href="/post/{{$next->tags->first()->name}}/{{str_replace(' ', '_', $next->title)}}/{{$next->id}}">
+                                                <h4>{{$next->title}}</h4>
+                                            </a>
+                                        </div>
+                                        <div class="arrow">
+                                            <a href="/post/{{$next->tags->first()->name}}/{{str_replace(' ', '_', $next->title)}}/{{$next->id}}">
+                                                <span class="lnr text-white ti-arrow-right"></span>
+                                            </a>
+                                        </div>
+                                        <div class="thumb">
+                                                <a href="/post/{{$next->tags->first()->name}}/{{str_replace(' ', '_', $next->title)}}/{{$next->id}}">
+                                                    <img class="img-fluid" src="/img/post/next.png" alt="">
+                                                </a>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -220,7 +222,7 @@
                         <aside class="single_sidebar_widget">
                             <div class="blog-author">
                                 <div class="media align-items-center">
-                                    <img src="/img/blog/author.png" alt="">
+                                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
                                     <div class="media-body">
                                         <a href="#">
                                             <h4>Tymen Vis</h4>
@@ -234,107 +236,63 @@
                         </aside>
                         <aside class="single_sidebar_widget popular_post_widget">
                             <h3 class="widget_title">Recent Post</h3>
-                            <div class="media post_item">
-                                <img src="/img/post/post_1.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>From life was you fish...</h3>
-                                    </a>
-                                    <p>January 12, 2019</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="/img/post/post_2.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>The Amazing Hubble</h3>
-                                    </a>
-                                    <p>02 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="/img/post/post_3.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>Astronomy Or Astrology</h3>
-                                    </a>
-                                    <p>03 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="/img/post/post_4.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>Asteroids telescope</h3>
-                                    </a>
-                                    <p>01 Hours ago</p>
-                                </div>
-                            </div>
+                            @if($posts)
+                                @foreach($posts as $post)
+                                    <div class="media post_item">
+                                        <img src="/img/post/post_1.png" alt="post">
+                                        <div class="media-body">
+                                            <a href="single-blog.html">
+                                                <h3>{{$post->title}}</h3>
+                                            </a>
+                                            <p>{{$post->created_at}}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </aside>
                         <aside class="single_sidebar_widget tag_cloud_widget">
-                            <h4 class="widget_title">Tag Clouds</h4>
+                            <h4 class="widget_title">Tags</h4>
                             <ul class="list">
-                                <li>
-                                    <a href="#">project</a>
-                                </li>
-                                <li>
-                                    <a href="#">love</a>
-                                </li>
-                                <li>
-                                    <a href="#">technology</a>
-                                </li>
-                                <li>
-                                    <a href="#">travel</a>
-                                </li>
-                                <li>
-                                    <a href="#">restaurant</a>
-                                </li>
-                                <li>
-                                    <a href="#">life style</a>
-                                </li>
-                                <li>
-                                    <a href="#">design</a>
-                                </li>
-                                <li>
-                                    <a href="#">illustration</a>
-                                </li>
+                                @foreach($tags as $tag)
+                                    <li><a href="/tag/{{$tag->name}}">{{$tag->name}}</a></li>
+                                @endforeach
                             </ul>
                         </aside>
-                        <aside class="single_sidebar_widget instagram_feeds">
-                            <h4 class="widget_title">Instagram Feeds</h4>
-                            <ul class="instagram_row flex-wrap">
-                                <li>
-                                    <a href="#">
-                                        <img class="img-fluid" src="/img/post/post_5.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img class="img-fluid" src="/img/post/post_6.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img class="img-fluid" src="/img/post/post_7.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img class="img-fluid" src="/img/post/post_8.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img class="img-fluid" src="/img/post/post_9.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img class="img-fluid" src="/img/post/post_10.png" alt="">
-                                    </a>
-                                </li>
-                            </ul>
-                        </aside>
+{{--                        <aside class="single_sidebar_widget instagram_feeds">--}}
+{{--                            <h4 class="widget_title">Instagram Feeds</h4>--}}
+{{--                            <ul class="instagram_row flex-wrap">--}}
+{{--                                <li>--}}
+{{--                                    <a href="#">--}}
+{{--                                        <img class="img-fluid" src="/img/post/post_5.png" alt="">--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a href="#">--}}
+{{--                                        <img class="img-fluid" src="/img/post/post_6.png" alt="">--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a href="#">--}}
+{{--                                        <img class="img-fluid" src="/img/post/post_7.png" alt="">--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a href="#">--}}
+{{--                                        <img class="img-fluid" src="/img/post/post_8.png" alt="">--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a href="#">--}}
+{{--                                        <img class="img-fluid" src="/img/post/post_9.png" alt="">--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a href="#">--}}
+{{--                                        <img class="img-fluid" src="/img/post/post_10.png" alt="">--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </aside>--}}
                         <aside class="single_sidebar_widget newsletter_widget">
                             <h4 class="widget_title">Newsletter</h4>
                             <form action="#">

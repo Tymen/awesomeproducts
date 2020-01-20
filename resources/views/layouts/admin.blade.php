@@ -203,6 +203,12 @@
                     <li><a href="/admin/users/create">Create</a></li>
                 </ul>
             </li>
+            <li class="@yield('sidenavContact')"><a href="#navcontact" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Users</a>
+                <ul id="navcontact" class="collapse list-unstyled ">
+                    <li><a href="/admin/contact">Overview</a></li>
+                    <li><a href="/admin/contact/create">Create</a></li>
+                </ul>
+            </li>
         </ul>
 {{--            <li><a href="/admin"> <i class="icon-grid"></i>Tables </a></li>--}}
 {{--            <li><a href="/admin"> <i class="fa fa-bar-chart"></i>Charts </a></li>--}}

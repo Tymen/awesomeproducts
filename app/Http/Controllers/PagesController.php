@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
@@ -20,9 +21,26 @@ class PagesController extends Controller
     {
         return view('about');
     }
-    public function contact()
+    public function contact($alert = null, $errorMessage = null)
     {
-        return view('contact');
+        return view('contact')->with("alert", $alert)->with("errorMessage", $errorMessage);
+    }
+    public function contactCreate(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'message' => 'required|max:5000',
+            'subject' => 'required|max:255',
+            'email' => 'required|max:255',
+        ]);
+        $createContact = new Contact();
+        $createContact->subject = $request->subject;
+        $createContact->email = $request->email;
+        $createContact->name = $request->name;
+        $createContact->message = $request->message;
+        $createContact->read = 0;
+        $createContact->save();
+        return $this->contact("Bedankt voor het bericht! U zal zo snel mogelijk van ons horen!");
     }
     public function elements()
     {

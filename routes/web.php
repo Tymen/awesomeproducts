@@ -17,13 +17,15 @@ Route::get('/about', "PagesController@about");
 Route::get('/tag/{tag?}', "PagesController@tag");
 Route::get('/elements', "PagesController@elements");
 Route::get('/contact', "PagesController@contact");
+Route::post('/contact', "PagesController@contactCreate");
 Route::get('/blog', "PagesController@blog");
 
 Auth::routes();
 
 Route::namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
     Route::get('/', "AdminController@index");
-    Route::get('/users', "AdminController@users");
+    Route::get('/contact', "AdminController@contact");
+    Route::get('/contact/{id}', "AdminController@contactShow");
     Route::resource('/users', "UserController");
     Route::resource('/tag', "TagController");
     Route::resource('/post', "PostController");

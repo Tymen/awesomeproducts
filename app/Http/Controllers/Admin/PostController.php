@@ -150,7 +150,18 @@ class PostController extends Controller
      */
     public function show(Post $post, $tag, $title, $id)
     {
-        return view("blogLayout.layout5")->with('post', Post::find($id));
+        if (Post::find($id)->enabled === 1){
+            $previous = Post::where('id', '<', $id)->orderBy('id','desc')->first();
+            $next = Post::where('id', '>', $id)->orderBy('id','desc')->first();
+            return view("blogLayout.layout5")
+                ->with('post', Post::find($id))
+                ->with('posts', Post::where("enabled", 1)->orderBy('created_at', 'desc')->paginate(4))
+                ->with("tags", Tag::all())
+                ->with("previous", $previous)
+                ->with("next", $next);
+        }else {
+            return redirect('/');
+        }
     }
 
     /**

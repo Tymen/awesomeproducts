@@ -89,11 +89,12 @@
             </div>
             @if($featPost)
                 <div class="col-xl-12 col-md-12">
+                    <a href="/post/{{$featPost->tags->first()->name}}/{{str_replace(' ', '_', $featPost->title)}}/{{$featPost->id}}">
                     <div class="single_photography mainImage" style="background-repeat: no-repeat; background-size: cover; background-image: url('{{$featPost->thumbnail}}');">
                         <div class="info">
                             <div class="info_inner">
-                                <h3><a href="/post/{{$featPost->tags->first()->name}}/{{str_replace(' ', '_', $featPost->title)}}/{{$featPost->id}}">{{$featPost->title}}<br>
-                                        Button Focus</a></h3>
+                                <h3>{{$featPost->title}}<br>
+                                        Button Focus</h3>
                                 <div class="date_catagory d-flex align-items-center justify-content-between">
                                     <span>12 jun 2019</span>
                                     <span class="catagory">lightroom</span>
@@ -101,6 +102,7 @@
                             </div>
                         </div>
                     </div>
+                    </a>
                 </div>
             @else
                 <div class="col-xl-12 col-md-12">

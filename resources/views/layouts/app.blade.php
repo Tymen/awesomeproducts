@@ -47,7 +47,7 @@
                             <div class="header_links ">
                                 <ul>
                                     <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                    <li><a class="twiter" href="#"> <i class="fa fa-twitter"></i> </a></li>
+                                    <li><a class="twiter" href="https://www.linkedin.com/in/tymen-vis-082257185/" target="_blank"> <i class="fa fa-linkedin"></i> </a></li>
                                     <li><a class="insta" href="#"> <i class="fa fa-instagram"></i> </a></li>
                                 </ul>
                             </div>
@@ -106,25 +106,27 @@
                                         <li><a class="@yield("activeHome")" href="/">Home</a></li>
                                         <li><a class="@yield("activeCatg")" href="/tag">catagory</a></li>
                                         <li><a @yield("activeAbout") href="/about">About</a></li>
-                                        <li><a @yield("active") href="#">pages <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                                                @if(Auth::check())
-                                                    @if (count(Auth::user()->Role->where("name", "admin")->all()) > 0 || count(Auth::user()->Role->where("name", "superuser")->all()) > 0 )
-                                                        <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
-                                                    @endif
-                                                @endif
-                                                <li><a class="dropdown-item" href="{{ route('logout') }}"
-                                                       onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                                        {{ __('Logout') }}
-                                                    </a></li>
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                    @csrf
-                                                </form>
-                                            </ul>
-                                        </li>
                                         <li><a @yield("activeContact") href="/contact">Contact</a></li>
+                                        @if (Auth::check())
+                                            <li><a @yield("active") href="#">profile <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                                                    @if(Auth::check())
+                                                        @if (count(Auth::user()->Role->where("name", "admin")->all()) > 0 || count(Auth::user()->Role->where("name", "superuser")->all()) > 0 )
+                                                            <li><a class="dropdown-item" href="/admin">Admin panel</a></li>
+                                                        @endif
+                                                    @endif
+                                                    <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                                           onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                                            {{ __('Logout') }}
+                                                        </a></li>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                        @csrf
+                                                    </form>
+                                                </ul>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </nav>
                             </div>
@@ -224,12 +226,12 @@
                                 <h1 class="text-white">Awesome products</h1>
                             </div>
                             <p class="footer_text">
-                                Explore photo media blog to enrich your photography knowledge
+                                Find amazing products! 2 posts every 2 weeks!
                             </p>
                             <div class="header_links">
                                 <ul>
                                     <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                    <li><a class="twiter" href="#"> <i class="fa fa-twitter"></i> </a></li>
+                                    <li><a class="twiter" href="https://www.linkedin.com/in/tymen-vis-082257185/" target="_blank"> <i class="fa fa-linkedin"></i> </a></li>
                                     <li><a class="insta" href="#"> <i class="fa fa-instagram"></i> </a></li>
                                 </ul>
                             </div>
@@ -246,7 +248,7 @@
                             <div class="footer_links text-center">
                                 <ul>
                                     <li><a href="/">home</a></li>
-                                    <li><a href="/category">category</a></li>
+                                    <li><a href="/tag">category</a></li>
                                     <li><a href="/about">about</a></li>
                                     <li><a href="/contact">contact</a></li>
                                 </ul>
