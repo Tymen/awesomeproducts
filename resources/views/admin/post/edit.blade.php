@@ -86,6 +86,7 @@
                                         <div class="form-group">
                                             <label class="form-control-label">Select amound of products</label>
                                             <select class="form-control" onchange="setProd(this)">
+                                                <option value="{{count($post->product->all())}}">{{count($post->product->all())}}</option>
                                                 <option value="2">1</option>
                                                 <option value="4">3</option>
                                                 <option value="6">5</option>
