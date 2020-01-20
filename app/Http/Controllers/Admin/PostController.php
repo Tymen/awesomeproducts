@@ -17,10 +17,6 @@ use mysql_xdevapi\Exception;
 
 class PostController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('checkAdmin');
-    }
     use UploadTrait;
     /**
      * Display a listing of the resource.
@@ -29,6 +25,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        $this->middleware('checkAdmin');
         return view('admin.post.index')->with("tags", Tag::all())->with("posts", Post::all());
     }
 
@@ -39,6 +36,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        $this->middleware('checkAdmin');
         return view('admin.post.create')->with("tags", Tag::all());
     }
 
@@ -57,6 +55,7 @@ class PostController extends Controller
     }
     public function store(Request $request)
     {
+        $this->middleware('checkAdmin');
         $request->validate([
 
         ]);
@@ -162,6 +161,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $this->middleware('checkAdmin');
         return view("admin.post.edit")->with("post", $post)->with("tags", Tag::all());
     }
 
@@ -174,6 +174,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $this->middleware('checkAdmin');
         $getAdmin = Auth::user()->Role->where("name", "admin")->all();
         $getSuperUser = Auth::user()->Role->where("name", "superuser")->all();
         if (count($getAdmin) > 0 || count($getSuperUser) > 0) {
@@ -214,7 +215,6 @@ class PostController extends Controller
                 $prodImageLink = "productLink_" . $x;
                 $prodBody = "bodyProd_" . $x;
                 if (!$request->$prodTitle == ""){
-                    $customLink = $this->editcustomLink($request->$prodLink, $post, $x, $request);
                     if ($request->hasFile($prodImage)) {
                         $image = $request->file($prodImage);
                         $name = str::slug($request->input("titleProd_" . $x)) . '_' . time();
@@ -230,13 +230,25 @@ class PostController extends Controller
                     } else {
                         $prodProccedLink = "";
                     }
-
-                    $editProduct = $post->product->find($x);
-                    $editProduct->title = $request->$prodTitle;
-                    $editProduct->image = $prodProccedLink;
-                    $editProduct->link = $customLink->idlink;
-                    $editProduct->body = $request->$prodBody;
-                    $editProduct->save();
+                    if (count($post->product->where("prod_id", $x)) > 0) {
+                        $customLink = $this->editcustomLink($request->$prodLink, $post, $x, $request);
+                        $editProduct = $post->product->where("prod_id", $x)->first();
+                        $editProduct->title = $request->$prodTitle;
+                        $editProduct->image = $prodProccedLink;
+                        $editProduct->link = $customLink->idlink;
+                        $editProduct->body = $request->$prodBody;
+                        $editProduct->save();
+                    }else {
+                        $customLink = $this->customLink($request->$prodLink, $post, $x, $request);
+                        $newProduct = new Products();
+                        $newProduct->title = $request->$prodTitle;
+                        $newProduct->image = $prodProccedLink;
+                        $newProduct->link = $customLink->idlink;
+                        $newProduct->prod_id = $x;
+                        $newProduct->body = $request->$prodBody;
+                        $newProduct->post_id = $post->id;
+                        $newProduct->save();
+                    }
                 }
             }
             return redirect("/admin/post");
@@ -262,6 +274,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $this->middleware('checkAdmin');
         try{
             Shortlinks::where('post_id', $post->id)->delete();
         }catch (Exception $err){

@@ -32,10 +32,10 @@ class PagesController extends Controller
     {
         if($tag){
             if (count(Tag::all()->where("name", $tag)) > 0) {
-                return view('category')->with("tags", Tag::all())->with("posts", Tag::all()->where("name", $tag)->first()->post);
+                return view('category')->with("tags", Tag::all())->with("posts", Tag::all()->where("name", $tag)->first()->post->where("enabled", 1));
             }
         }
-        return view('category')->with("tags", Tag::all())->with("posts", Post::all());
+        return view('category')->with("tags", Tag::all())->with("posts", Post::where("enabled", 1)->orderBy('created_at', 'desc')->paginate(6));
     }
     public function blog()
     {

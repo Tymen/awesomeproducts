@@ -117,8 +117,10 @@
                                                 </div>
                                             @endforeach
                                         </div>
-                                        <div class="form-group">
-                                            <input id="prodCount" name="prodCount" type="hidden" value="{{count($post->product->all())}}">
+                                        <div class="form-group" id="prodCountParent">
+                                            <div id="prodHidden">
+                                                <input id="prodCount" name="prodCount" type="hidden" value="{{count($post->product->all())}}">
+                                            </div>
                                             <input class="form-control" type="submit" value="Edit" class="btn btn-primary">
                                         </div>
                                     </div>
@@ -166,7 +168,14 @@
                         <textarea class="form-control" name="bodyProd_${i}"></textarea>
                     </div>
                     `
-                    document.getElementById("prodCount").value = i;
+
+                    document.getElementById(`prodHidden`).remove();
+                    const prodCountDiv = document.createElement("div");
+                    const prodCount = document.getElementById("prodCountParent");
+                    prodCountDiv.id = "prodHidden";
+                    prodCountDiv.innerHTML = `<input id="prodCount" name="prodCount" type="hidden" value="${el.value}">`;
+                    prodCount.appendChild(prodCountDiv);
+
                     if(document.getElementById(name)){
 
                     }else {
