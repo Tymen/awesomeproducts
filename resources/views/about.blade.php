@@ -20,41 +20,12 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="about_text">
-                    <h3>Lost Is Just a Four Letter Word</h3>
-                    <p class="about_text_1">For man shall him gathering image dry gathering which cattle. Said
-                        second fruit dry Upon cattle sixth lights herb gathered second that night sea his blessed he
-                        us meat Seed void. Day saw him days itself lights. Give waters multiply earth very brought
-                        replenish open itself multiply upon cattle she’d rule make doesn’t lights together I let
-                        heaven which for land saw grass our was unto face brought seed dry moving was, were great.
-                        Our won’t dry herb set over. Seasons earth upon fill it after. Shall she’d hath so which
-                        seas to </p>
+                    <h3>Over Awesomeproducts.nl</h3>
+                    <p class="about_text_1">Heb jij ook wel eens keuze stress? Ben jij ook wel eens opzoek naar een leuk product?. Dan ben je hier
+                    op het juiste adres! Wij doen persoonlijk onderzoek naar leuke, verassende, vernieuwende en goeie producten! Deze producten kun je hier vinden in verschillende onderwerpen.</p>
                     <p class="about_text_2">
-                        For man shall him gathering image dry gathering which cattle. Said second fruit dry Upon
-                        cattle sixth lights herb gathered second that night sea his blessed he us meat Seed void.
-                        Day saw him days itself lights. Give waters multiply earth very brought replenish open
-                        itself multiply upon cattle
+                        Wij plaatsen 2x in de week verschillende posts met een ander onderwerp!.
                     </p>
-                </div>
-            </div>
-            <div class="col-xl-12">
-                <div class="about_thumb">
-                    <img src="img/about/banner.png" alt="">
-                </div>
-            </div>
-            <div class="about_details">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <p>For man shall him gathering image dry gathering which cattle. Said second fruit dry
-                                Upon cattle sixth lights herb gathered second that night sea his blessed he us meat
-                                Seed void. Day saw him days itself lights.</p>
-                        </div>
-                        <div class="col-xl-6">
-                            <p>For man shall him gathering image dry gathering which cattle. Said second fruit dry
-                                Upon cattle sixth lights herb gathered second that night sea his blessed he us meat
-                                Seed void. Day saw him days itself lights.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -79,9 +50,9 @@
                         <img src="img/team/1.png" alt="">
                         <div class="author_links">
                             <ul>
-                                <li><a href="#"> <i class="fa fa-envelope"></i> </a></li>
+                                <li><a href="mailto:info@tvis.nl"> <i class="fa fa-envelope"></i> </a></li>
                                 <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
-                                <li><a href="#"> <i class="fa fa-linkedin-square"></i> </a></li>
+                                <li><a href="https://www.linkedin.com/in/tymen-vis-082257185/"> <i class="fa fa-linkedin-square"></i> </a></li>
                             </ul>
                         </div>
                     </div>
@@ -97,7 +68,7 @@
                         <img src="img/team/2.png" alt="">
                         <div class="author_links">
                             <ul>
-                                <li><a href="#"> <i class="fa fa-envelope"></i> </a></li>
+                                <li><a href="mailto:erikvdreest@gmail.com"> <i class="fa fa-envelope"></i> </a></li>
                                 <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
                                 <li><a href="#"> <i class="fa fa-linkedin-square"></i> </a></li>
                             </ul>
