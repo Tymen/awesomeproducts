@@ -6,7 +6,12 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
+.blog_area a {
+    color: #007ddb !important;
+    text-decoration: none;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
