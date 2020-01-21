@@ -71,6 +71,9 @@
                                         <div class="form-group">
                                             <textarea class="form-control" name="body"></textarea>
                                         </div>
+                                            <script>
+                                                CKEDITOR.replace( 'body' );
+                                            </script>
                                         <div class="form-group">
                                             <label class="form-control-label">Select amound of products</label>
                                             <select class="form-control" onchange="setProd(this)">

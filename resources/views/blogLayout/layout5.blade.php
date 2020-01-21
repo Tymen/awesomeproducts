@@ -25,7 +25,7 @@
                     <div class="single-post">
                         <div class="blog_details">
                             <p class="excert">
-                                {{$post->body}}
+                                {!!$post->body!!}
                             </p>
                         </div>
                         @foreach ($post->product as $product)

@@ -6,6 +6,7 @@
     <title>@yield('docTitle') | Admin</title>
     <meta name="description" content="">
     @yield('head')
+    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
