@@ -18,14 +18,14 @@
                 <div class="photoslider_active owl-carousel">
                     @if(count($tags) > 0)
                         @foreach($tags as $tag)
-                            <div class="single_photography">
-                                <a href="/tag/{{$tag->name}}">
-                                    <img src="{{$tag->imageSrc}}" alt="">
-                                    <div class="photo_title">
-                                        <h4>{{$tag->name}}</h4>
-                                    </div>
-                                </a>
-                            </div>
+                            <a href="/tag/{{$tag->name}}">
+                                <div class="single_photography">
+                                        <img class="Tagimage" src="{{$tag->imageSrc}}" alt="">
+                                        <div class="photo_title">
+                                            <h4>{{$tag->name}}</h4>
+                                        </div>
+                                </div>
+                            </a>
                         @endforeach
                     @else
                         <div class="single_photography">
