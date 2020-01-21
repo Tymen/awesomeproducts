@@ -73,6 +73,7 @@
             <div class="col-xl-12">
                 <div class="section_title mb-33">
                     <h3>Most Recent</h3>
+                    <p>We found: {{count($posts)}} posts</p>
                 </div>
             </div>
             <div class="col-xl-8 col-md-8">
