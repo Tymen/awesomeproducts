@@ -15,6 +15,11 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
+                <div class="section_title mb-33">
+                    <h3>Categoriën</h3>
+                </div>
+            </div>
+            <div class="col-xl-12">
                 <div class="photoslider_active owl-carousel">
                     @if(count($tags) > 0)
                         @foreach($tags as $tag)
