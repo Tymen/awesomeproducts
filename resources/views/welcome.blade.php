@@ -29,7 +29,7 @@
                             @foreach($tags as $tag)
                                 <div class="single_photography">
                                     <a href="/tag/{{$tag->name}}">
-                                        <img src="{{$tag->imageSrc}}" alt="">
+                                        <img class="Tagimage" src="{{$tag->imageSrc}}" alt="">
                                         <div class="photo_title">
                                             <h4>{{$tag->name}}</h4>
                                         </div>
