@@ -209,8 +209,7 @@
                                 <div class="blog_meta">
                                     <p><a href="/post/{{$post->tags->first()->name}}/{{str_replace(' ', '_', $post->title)}}/{{$post->id}}">{{$post->tags->first()->name}}</a></p>
                                     <h3><a href="/post/{{$post->tags->first()->name}}/{{str_replace(' ', '_', $post->title)}}/{{$post->id}}">
-                                            {{$post->title}} <br>
-                                            Greenland
+                                            {{$post->title}}
                                         </a></h3>
                                 </div>
                             </div>
