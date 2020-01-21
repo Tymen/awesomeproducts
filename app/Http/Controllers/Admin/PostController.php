@@ -150,7 +150,7 @@ class PostController extends Controller
      */
     public function show(Post $post, $tag, $title, $id)
     {
-        if (Post::find($id)->enabled === 1){
+        if (Post::find($id)->enabled){
             $previous = Post::where('id', '<', $id)->orderBy('id','desc')->first();
             $next = Post::where('id', '>', $id)->orderBy('id','desc')->first();
             return view("blogLayout.layout5")
